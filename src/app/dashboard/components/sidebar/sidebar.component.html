@@ -1,0 +1,36 @@
+<aside
+  class="fixed top-0 left-0 z-50 flex flex-col justify-between h-full text-white transition-all duration-300 ease-in-out bg-gray-800"
+  [ngClass]="{ 'w-64': !collapsed, 'w-16': collapsed }"
+>
+  <!-- Menú -->
+  <nav class="flex-1 p-4 space-y-2">
+    <a
+      routerLink="/dashboard/home"
+      class="flex items-center gap-2 p-2 rounded hover:bg-gray-700"
+    >
+      🏠
+      <span *ngIf="!collapsed">Home</span>
+    </a>
+
+    <a
+      routerLink="/dashboard/productos"
+      class="flex items-center gap-2 p-2 rounded hover:bg-gray-700"
+    >
+      📦
+      <span *ngIf="!collapsed">Productos</span>
+    </a>
+
+
+  </nav>
+
+  <!-- Logout abajo -->
+  <div class="p-4 border-t border-gray-700">
+    <button
+      (click)="logout()"
+      class="flex items-center justify-center w-full gap-2 px-2 py-2 text-white bg-red-600 rounded hover:bg-red-700"
+    >
+      🔒
+      <span *ngIf="!collapsed">Logout</span>
+    </button>
+  </div>
+</aside>

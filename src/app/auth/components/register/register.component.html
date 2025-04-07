@@ -1,0 +1,33 @@
+<!-- auth/components/register/register.component.html -->
+
+<div class="flex items-center justify-center min-h-screen bg-gray-900">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="bg-gray-800 p-8 rounded shadow-md w-full max-w-sm">
+    <h2 class="text-2xl font-bold mb-4 text-white">Registro</h2>
+
+    <div class="mb-4">
+      <label class="block mb-1 text-sm font-medium text-gray-300">Nombre</label>
+      <input formControlName="nombre" type="text" class="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-200" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 text-sm font-medium text-gray-300">Usuario</label>
+      <input formControlName="username" type="text" class="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-200" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 text-sm font-medium text-gray-300">Correo</label>
+      <input formControlName="correo" type="email" class="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-200" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 text-sm font-medium text-gray-300">Contraseña</label>
+      <input formControlName="password" type="password" class="w-full px-3 py-2 border border-gray-600 rounded bg-gray-700 text-gray-200" />
+    </div>
+
+    <div *ngIf="error" class="text-red-400 text-sm mb-2">{{ error }}</div>
+
+    <button type="submit" [disabled]="loading" class="w-full bg-blue-700 text-white py-2 rounded hover:bg-blue-800">
+      {{ loading ? 'Registrando...' : 'Registrarse' }}
+    </button>
+  </form>
+</div>

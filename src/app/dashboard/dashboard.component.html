@@ -1,0 +1,21 @@
+<div class="flex min-h-screen">
+  <!-- Sidebar -->
+  <app-sidebar [collapsed]="sidebarCollapsed" (close)="sidebarCollapsed = true"></app-sidebar>
+
+  <!-- Contenido general: header + router-outlet -->
+  <div
+  class="flex flex-col w-full transition-all duration-300 ease-in-out"
+  [ngClass]="{ 'lg:ml-64': !sidebarCollapsed, 'ml-16': sidebarCollapsed }"
+>
+    <!-- Header -->
+    <app-header
+      [sidebarCollapsed]="sidebarCollapsed"
+      (toggleSidebar)="toggleSidebar()"
+    ></app-header>
+
+    <!-- Contenido -->
+    <main class="flex-1 p-6 pt-20 bg-gray-100">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

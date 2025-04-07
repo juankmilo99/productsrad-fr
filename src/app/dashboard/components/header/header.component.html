@@ -1,0 +1,15 @@
+<header
+  class="fixed top-0 z-50 flex items-center w-full h-16 px-4 py-3 transition-all duration-300 bg-white shadow"
+>
+  <!-- Botón del menú -->
+  <div class="flex items-center h-full gap-4 px-4">
+    <button (click)="toggleSidebar.emit()" class="p-3">
+      <img src="assets/menu.png" alt="Menu" class="w-4 h-4" />
+    </button>
+  </div>
+
+  <!-- Título al final del header -->
+  <h1 class="ml-8 mr-4 text-xl font-semibold truncate max-w-[calc(100%-100px)]">
+    {{ userName }}
+  </h1>
+</header>

@@ -1,0 +1,85 @@
+<!-- Breadcrumb fuera de la tarjeta -->
+<nav class="max-w-xl mx-auto mb-4 text-sm text-gray-600" aria-label="breadcrumb">
+  <ol class="flex space-x-2">
+    <li>
+      <a routerLink="/dashboard" class="text-blue-600 hover:underline">Dashboard</a>
+      <span>/</span>
+    </li>
+    <li>
+      <a routerLink="/dashboard/productos" class="text-blue-600 hover:underline">Productos</a>
+      <span>/</span>
+    </li>
+    <li class="font-semibold text-gray-800">
+      {{ isEditMode ? 'Editar' : 'Crear' }}
+    </li>
+  </ol>
+</nav>
+
+<!-- Tarjeta del formulario -->
+<div class="max-w-xl p-6 mx-auto bg-white rounded shadow">
+  <h2 class="mb-4 text-xl font-bold">{{ isEditMode ? 'Editar' : 'Crear' }} producto</h2>
+
+  <form #form="ngForm" (ngSubmit)="guardar(form)" novalidate>
+    <div class="mb-4">
+      <label class="block mb-1 font-medium">Nombre</label>
+      <input
+        type="text"
+        class="w-full p-2 border rounded"
+        [(ngModel)]="producto.nombre"
+        name="nombre"
+        required
+        #nombre="ngModel"
+      />
+      <p *ngIf="nombre.invalid && nombre.touched" class="text-sm text-red-500">Nombre es requerido</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 font-medium">Precio</label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded"
+        [(ngModel)]="producto.precio"
+        name="precio"
+        required
+        min="0.01"
+        #precio="ngModel"
+      />
+      <p *ngIf="precio.invalid && precio.touched" class="text-sm text-red-500">Precio válido requerido</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 font-medium">Descripción</label>
+      <input
+        type="text"
+        class="w-full p-2 border rounded"
+        [(ngModel)]="producto.descripcion"
+        name="descripcion"
+        required
+        #descripcion="ngModel"
+      />
+      <p *ngIf="descripcion.invalid && descripcion.touched" class="text-sm text-red-500">Descripción es requerida</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1 font-medium">Stock</label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded"
+        [(ngModel)]="producto.stock"
+        name="stock"
+        required
+        min="0"
+        #stock="ngModel"
+      />
+      <p *ngIf="stock.invalid && stock.touched" class="text-sm text-red-500">Stock debe ser 0 o mayor</p>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 disabled:opacity-50"
+    >
+      {{ isEditMode ? 'Actualizar' : 'Crear' }}
+    </button>
+  </form>
+</div>
